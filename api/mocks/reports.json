@@ -1,0 +1,8 @@
+{
+    "body": {},
+    "pathParameters": {
+        "eventType": "pushToS3",
+        "orgId": 33765,
+        "providerId": 109
+    }
+}

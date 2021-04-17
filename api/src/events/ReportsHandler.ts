@@ -17,6 +17,7 @@ export class ReportsHandler {
     context: any;
     constructor(event: any, context: any) {
         this.logIndex = {};
+        this.params = this.logIndex;
         this.body = event.body;
         this.context = context;
         this.params.eventType = event.pathParameters.eventType;
@@ -45,7 +46,7 @@ export class ReportsHandler {
                 {
                   "name":"Sparsh Khandelwal",
                   "email":"sparsh1994@gmail.com",
-                  "mobile": 1234567890
+                  "mobile": "1234567890"
                 }
               ];
               // create workbook
