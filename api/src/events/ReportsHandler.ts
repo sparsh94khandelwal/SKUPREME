@@ -74,14 +74,12 @@ export class ReportsHandler {
 // take workbook and save it into the file
 // Writes the excel file to the process.cwd();
 console.log('this.context.awsRequestId', this.context.awsRequestId);
-let id = this.context.awsRequestId;
 let filename: string = `${this.context.awsRequestId}.xlsx`;
     wb.write(filename);
     let filePath: string = path.join(process.cwd(), filename);
     console.log('filePath', filePath);
             
-            let tempPath = path.join(os.tmpdir(),  id);
-            let convertedPath = path.join(os.tmpdir(), 'converted-' + id + EXTENSION);
+            let tempPath = path.join(os.tmpdir(), filename);
             
           console.log('tempPath', tempPath);
           let s3Util = new S3Upload();
