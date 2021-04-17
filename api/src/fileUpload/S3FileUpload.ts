@@ -1,6 +1,6 @@
 import * as awsSdk from "aws-sdk";
 import { S3Params } from "../S3/S3Params";
-import * as fs from 'fs';
+const fs = require('fs');
 awsSdk.config.update({ region: process.env.DEFAULT_REGION });
 const s3 = new awsSdk.S3();
 

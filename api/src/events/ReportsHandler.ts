@@ -88,7 +88,7 @@ let filename: string = `${this.context.awsRequestId}.xlsx`;
             // upload excel to s3
             return ApiResponseBase.success({});
         } catch (e) {
-            console.error("failed in getting logs", this.logIndex, e);
+            console.error("failed in pushToS3", this.logIndex, e);
             return [false, e.message];
         }
     };
