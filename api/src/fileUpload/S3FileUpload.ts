@@ -44,12 +44,11 @@ export class S3Upload {
 	}
     
     public uploadFileToS3 = async (bucket, fileKey, filePath, contentType) => {
-		console.log('uploading', bucket, fileKey, filePath);
+		console.log('uploading', bucket, fileKey, filePath, contentType);
 		return s3.upload({
 			Bucket: bucket,
 			Key: fileKey,
 			Body: fs.createReadStream(filePath),
-			ACL: 'private',
 			ContentType: contentType
 		}).promise();
 	};
