@@ -19,6 +19,7 @@ export class ReportsHandler {
         this.logIndex = {};
         this.body = event.body;
         this.context = context;
+        this.params.eventType = event.pathParameters.eventType;
     }
 
     getEventType = () => {
