@@ -42,7 +42,13 @@ export class ReportsHandler {
             let filename: string = `${this.context.awsRequestId}.${EXTENSION}`;
             // convert json to xls
             console.log('eventBody', this.body);
-            let convertedObj = json2xls(this.body.data);
+            let fieldTypes = this.body.data[0] && Object.keys(this.body.data[0]).map((field: string) => {
+                return {[field]: typeof(this.body.data[0][field])}
+            })
+            // we can pass options as second parameter
+            let convertedObj = json2xls(this.body.data, {
+                fields: fieldTypes[0]
+            });
             fs.writeFileSync(`/tmp/${filename}`, convertedObj, 'binary');
            
             let filePath = `/tmp/${filename}`;
