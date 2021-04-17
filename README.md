@@ -1,0 +1,1 @@
+AWS_PROFILE=stage serverless invoke local -f reports -p ./mocks/reports.json --region us-east-2
