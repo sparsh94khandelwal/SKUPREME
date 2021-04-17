@@ -46,9 +46,6 @@ export class ReportsHandler {
             // this part should be moved to handlerBase
             if (this.body && typeof this.body === "string") {
                 this.body = JSON.parse(this.body);
-                if (typeof this.body === "string") {
-                    this.body = JSON.parse(this.body);
-                }
             }
             let data = this.body.data;
             console.log('data', data);
