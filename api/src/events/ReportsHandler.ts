@@ -44,7 +44,8 @@ export class ReportsHandler {
             console.log('eventBody', this.body);
             let fieldTypes = this.body.data[0] && Object.keys(this.body.data[0]).map((field: string) => {
                 return {[field]: typeof(this.body.data[0][field])}
-            })
+            });
+            console.log('fieldTypes', fieldTypes);
             // we can pass options as second parameter
             let convertedObj = json2xls(this.body.data, {
                 fields: fieldTypes[0]

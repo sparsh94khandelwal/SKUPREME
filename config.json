@@ -90,7 +90,7 @@
         }
     },
     "API_Variables": {
-        "local": {
+        "stage": {
             "APP_NAME": "lsq-exploration",
             "ROLE": "arn:aws:iam::315470347968:role/ConnectorLambdaDevRole",
             "BASE_URL": "${CommonConfigVariables.api_lambda_base}",
@@ -100,7 +100,9 @@
             "AWS_LAMBDA_TIMEOUT": "10",
             "AWS_LOG_RETENTION_IN_DAYS": "1",
             "SLS_BUILD_BUCKET": "stage-connectors-sls-build",
-            "S3_LOG_BUCKET": "stage-connectors-data"
+            "S3_LOG_BUCKET": "stage-connectors-data",
+            "EXTENSION": ".xlsx",
+            "MIME_TYPE": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         }
     }
 }
