@@ -1,0 +1,57 @@
+---
+  service: lsq-exploration
+  plugins: 
+    - serverless-plugin-typescript
+    - serverless-offline
+  custom: 
+    output: 
+      handler: sls/postSlsDeployment.handler
+      file: sls/stack.json
+    myStage: ${opt:stage, self:provider.stage}
+    serverless-offline: 
+      httpPort: 4000
+  provider: 
+    name: aws
+    deploymentBucket: 
+      name: ${file(env.yml):${self:custom.myStage}.SLS_BUILD_BUCKET}
+    runtime: nodejs12.x
+    tags: 
+      ConnectorIdentifier: lsq-exploration
+      ConnectorPurpose: ConnectorBackend
+      CostType: Customer
+    stage: ${opt:stage, 'stage'}
+    region: ${file(env.yml):${self:custom.myStage}.DEFAULT_REGION}
+    versionFunctions: false
+    role: ${file(env.yml):${self:custom.myStage}.ROLE}
+    logRetentionInDays: ${file(env.yml):${self:custom.myStage}.AWS_LOG_RETENTION_IN_DAYS}
+    environment: ${file(env.yml):${self:custom.myStage}}
+    iamRoleStatements: 
+      - 
+        Effect: Allow
+        Action: 
+          - dynamodb:DescribeTable
+          - dynamodb:Query
+          - dynamodb:Scan
+          - dynamodb:GetItem
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+          - dynamodb:DeleteItem
+          - dynamodb:GetRecords
+          - dynamodb:GetShardIterator
+          - dynamodb:DescribeStream
+          - dynamodb:ListStreams
+          - sqs:ReceiveMessage
+          - sqs:DeleteMessage
+          - sqs:GetQueueAttributes
+        Resource: ${file(env.yml):${self:custom.myStage}.DYNAMO_DB_ARN}
+  functions: 
+    reports: 
+      handler: src/routeHandler.reportsHandler
+      memorySize: 128
+      timeout: ${file(env.yml):${self:custom.myStage}.AWS_LAMBDA_TIMEOUT}
+      events: 
+        - 
+          http: 
+            path: reports
+            method: post
+            cors: true

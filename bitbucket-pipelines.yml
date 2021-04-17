@@ -1,0 +1,25 @@
+image: node:12.15.0
+pipelines:
+  branches:
+    stage:
+    - step:
+        name: Prepare Build
+        script:
+          - echo "build started"
+    - step:
+        deployment: stage-api
+        name: Build and Deploy
+        script:
+          - npm i serverless@1.57.0 -g
+          - npm i typescript -g
+          - npm i
+          - npm run apiSetup stage
+          - cd api
+          - npm i
+          - serverless config credentials --provider aws --key $AWS_STAGE_ACCESS_KEY --secret $AWS_STAGE_SECRET_KEY -o
+          - sls deploy -r $AWS_STAGE_DEFAULT_REGION --stage stage
+          - cd ..
+          - npm run updateConfig --env stage
+        artifacts:
+          - api/serverless.yml
+          - api/env.yml              
