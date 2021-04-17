@@ -3,10 +3,6 @@ pipelines:
   branches:
     stage:
     - step:
-        name: Prepare Build
-        script:
-          - echo "build started"
-    - step:
         deployment: stage-api
         name: Build and Deploy
         script:

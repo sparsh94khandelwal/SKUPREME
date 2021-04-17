@@ -6,7 +6,7 @@
         },
         "stage": {
             "s3_web_base": "",
-            "api_lambda_base": ""
+            "api_lambda_base": "https://hh3qrrbdp5.execute-api.us-east-2.amazonaws.com/stage"
         }
     },
     "ServerlessConfiguration": {

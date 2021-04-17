@@ -1,7 +1,10 @@
 {
     "name": "lsq-exploration-api",
     "dependencies": {
-        "aws-sdk": "2.607.0"
+        "aws-sdk": "2.607.0",
+        "excel4node": "^1.7.2",
+        "exceljs": "^4.2.1",
+        "json2xls": "^0.1.2"
     },
     "devDependencies": {
         "typescript": "^3.9.3",

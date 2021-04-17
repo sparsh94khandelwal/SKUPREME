@@ -2,20 +2,12 @@
     "name": "lsq-exploration",
     "version": "1.0.0",
     "dependencies": {
-        "copy-files-from-to": "^2.3.0",
-        "lsqComponents": "git+ssh://git@bitbucket.org/leadsquaredconnectors/lsqcomponents.git#v1.7",
         "lsqSetup": "ssh://git@bitbucket.org/leadsquaredconnectors/lsqsetup.git#v1.0.1",
         "typescript": "^3.7.4"
     },
     "devDependencies": {
         "prettier": "^2.2.1"
     },
-    "copyFiles": [
-        {
-            "from": "node_modules/lsqComponents/public/**",
-            "to": "ui/public"
-        }
-    ],
     "scripts": {
         "bootstrap": "npm i && cd ui && npm i && cd .. && cd api && npm i && cd .. && npm run apiSetup && npm run uiSetup",
         "apiSetup": "node --experimental-modules --experimental-json-modules ./node_modules/lsqSetup/setup.mjs"
