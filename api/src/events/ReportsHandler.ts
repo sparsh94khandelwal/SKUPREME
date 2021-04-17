@@ -43,7 +43,9 @@ export class ReportsHandler {
             // convert json to xls
             console.log('eventBody', this.body);
             let data = this.body.data;
+            console.log('data', data);
             let fieldTypes = data[0] && Object.keys(data[0]).map((field: string) => {
+                console.log('field', field);
                 console.log('data[0][field]', data[0][field])
                 return {[field]: typeof(data[0][field])}
             });
