@@ -1,5 +1,13 @@
 {
-    "body": {},
+    "body": {
+        "data": [
+            {
+                "name": "Sparsh Khandelwal",
+                "email": "sparsh1994@gmail.com",
+                "mobile": "1234567890"
+            }
+        ]
+    },
     "pathParameters": {
         "eventType": "pushToS3",
         "orgId": 33765,
