@@ -52,6 +52,6 @@
       events: 
         - 
           http: 
-            path: reports
+            path: reports/{eventType}
             method: post
             cors: true
